@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="submitted-data" *ngIf="formData">
+      <h2>Submitted Data</h2>
+      <p>First name: {{ formData.firstName }}</p>
+      <p>Last name: {{ formData.lastName }}</p>
+      <p>Date of Birth: {{ formData.birthDate }}</p>
+      <p>Phone number: {{ formData.contactNo }}</p>
+      <p>Sheridan Campus: {{ formData.campusList }}</p>
+      <p>Sheridan Department: {{ formData.departmentList }}</p>
+    </div>
+  
+    <button mat-button routerLink="/form">Back to Form</button>
+  </div>
+  

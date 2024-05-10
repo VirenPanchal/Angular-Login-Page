@@ -1,0 +1,72 @@
+<form [formGroup]="admissionForm" (ngSubmit)="onSubmit()">
+    <hr />
+    <fieldset>
+        <legend style="text-align: center; font-weight: bolder;">Personal Information</legend>
+        <div class="form-fields">
+            <mat-form-field appearance="outline" class="form-item">
+                <mat-label>First Name</mat-label>
+                <input matInput id="firstName" formControlName="firstName" />
+                <mat-error *ngIf="admissionForm.get('firstName')!.invalid && admissionForm.get('firstName')!.touched">First Name is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-item">
+                <mat-label>Last Name</mat-label>
+                <input matInput id="lastName" formControlName="lastName" />
+                <mat-error *ngIf="admissionForm.get('lastName')!.invalid && admissionForm.get('lastName')!.touched">Last Name is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-item">
+                <mat-label>Birth Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="admissionForm.get('birthDate')!.invalid && admissionForm.get('birthDate')!.touched">Invalid Date.</mat-error>
+            </mat-form-field>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend style="text-align: center; font-weight: bolder;">Contact Information</legend>
+        <div class="form-fields">
+
+            <mat-form-field appearance="outline" class="form-item">
+                <mat-label>Email</mat-label>
+                <input matInput id="email" formControlName="email" />
+                <mat-error *ngIf="admissionForm.get('email')!.invalid && admissionForm.get('email')!.touched">Email is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-item">
+                <mat-label> Contact Number </mat-label>
+                <input matInput id="contactNo" formControlName="contactNo" />
+            </mat-form-field>
+
+</div> </fieldset>
+
+
+<fieldset>
+    <legend style="text-align: center; font-weight: bolder;">College Information </legend>
+    <div class="form-fields" >
+        <mat-label> Select Campus : </mat-label>
+        <mat-radio-group class="form-item" id="campusList" ngModel name="campusList" [ngModel]="campusList">
+            <mat-radio-button value="Davis">Davis</mat-radio-button>
+            <mat-radio-button value="Trasfalgar">Trasfalgar</mat-radio-button>
+            <mat-radio-button value="HMC">HMC</mat-radio-button>
+
+
+        </mat-radio-group>
+
+        <mat-form-field appearance="outline" class="form-item">
+            <mat-label>Select Department</mat-label>
+            <mat-select formControlName="departmentList" id="departmentList">
+              <mat-option *ngFor="let department of departmentList" [value]="department">{{ department }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="admissionForm.get('departmentList')!.invalid && admissionForm.get('departmentList')!.touched">
+              Department is required.
+            </mat-error>  </mat-form-field>
+
+          
+</div>  </fieldset>
+<button mat-raised-button color="accent" type="submit" [disabled]="!admissionForm.valid"> Submit </button>
+
+
+</form>
